@@ -7,12 +7,32 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.14.3/video-js.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.14.3/video.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/videojs-http-streaming@2.12.0/dist/videojs-http-streaming.min.js"></script>
-</head>
-<body style="text-align: center; background-color: #000; padding-top: 20px; margin: 0;">
+    <style>
+        /* Responsive video container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px; /* Adjust max width if needed */
+            margin: auto;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
 
-    <video id="live-stream" class="video-js vjs-default-skin" controls autoplay width="100%" height="auto">
-        <source src="https://dcs-live-ue1.mp.lura.live/server/play/8AkZMW1F8oGwc4p0/rendition.m3u8?track=video-0&anvsid=m177618734-nb40ff01477beed29ee2bdf6022792bbd&ts=1740963311&anvtrid=9bc2c5b8b24465e06f6374a6289bd70a" type="application/x-mpegURL">
-    </video>
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #000; text-align: center;">
+
+    <div class="video-container">
+        <video id="live-stream" class="video-js vjs-default-skin" controls autoplay>
+            <source src="https://dcs-live-ue1.mp.lura.live/server/play/8AkZMW1F8oGwc4p0/rendition.m3u8?track=video-0&anvsid=m177618734-nb40ff01477beed29ee2bdf6022792bbd&ts=1740963311&anvtrid=9bc2c5b8b24465e06f6374a6289bd70a" type="application/x-mpegURL">
+        </video>
+    </div>
 
     <script>
         var player = videojs('live-stream');
